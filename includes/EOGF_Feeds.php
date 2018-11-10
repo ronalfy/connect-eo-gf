@@ -84,12 +84,17 @@ class EOGF_Feeds extends \GFFeedAddOn {
 			array(
 				'dependency' => 'emailoctopuslist',
 				'fields'     => array(
-					array( 'type' => 'save' ),
 					array(
-						'type'  => 'feed_condition',
-						'name'  => 'emailoctopus',
-						'label' => 'Feed Condition',
-					)
+						'name'    => 'optinCondition',
+						'label'   => esc_html__( 'Conditional Logic', 'emailoctopus-gravity-forms' ),
+						'type'    => 'feed_condition',
+						'tooltip' => sprintf(
+							'<h6>%s</h6>%s',
+							esc_html__( 'Conditional Logic', 'emailoctopus-gravity-forms' ),
+							esc_html__( 'When conditional logic is enabled, form submissions will only be exported to EmailOctopus when the conditions are met. When disabled all form submissions will be exported.', 'emailoctopus-gravity-forms' )
+						),
+					),
+					array( 'type' => 'save' ),
 				)
 			),
 		);
