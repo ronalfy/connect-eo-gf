@@ -19,9 +19,9 @@ class EOGF_API_Helper {
 		$api_key = sanitize_text_field( $api_key );
 
 		// Check option for api key status
-		$gforms_api_options = get_option('gravityformsaddon_EOGF_API_settings', false);
-		$saved_api_key = isset( $forms_api_options['eogf_api_key'] ) ? $forms_api_options['eogf_api_key'] : false;
-		$saved_connect_status = isset( $forms_api_options['eogf_connected'] ) ? $forms_api_options['eogf_connected'] : false;
+		$gforms_api_options = get_option('emailoctopus_gf_settings', false);
+		$saved_api_key = isset( $forms_api_options['api_key'] ) ? $forms_api_options['api_key'] : false;
+		$saved_connect_status = isset( $forms_api_options['connected'] ) ? $forms_api_options['connected'] : false;
 
 		if ($saved_api_key && $saved_connect_status === 'connected') {
 			return true;
@@ -43,10 +43,29 @@ class EOGF_API_Helper {
 			if (isset($body->error)) {
 				return false;
 			}
-			$gforms_api_options = get_option('gravityformsaddon_EOGF_API_settings', false);
-			$gforms_api_options['eogf_api_key'] = $api_key;
-			$gforms_api_options['eogf_connected'] = 'connected';
-			update_option('gravityformsaddon_EOGF_API_settings', $gforms_api_options);
+			$gforms_api_options = get_option('emailoctopus_gf_settings', false);
+			$gforms_api_options['api_key'] = $api_key;
+			$gforms_api_options['connected'] = 'connected';
+			update_option('emailoctopus_gf_settings', $gforms_api_options);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Checks for a valid connected API key
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @return bool Whether the API key is valid or not
+	 */
+	public function is_connected() {
+		// Check option for api key status
+		$gforms_api_options = get_option('emailoctopus_gf_settings', false);
+		$saved_api_key = isset( $gforms_api_options['api_key'] ) ? $gforms_api_options['api_key'] : false;
+		$saved_connect_status = isset( $gforms_api_options['connected'] ) ? $gforms_api_options['connected'] : false;
+		if ($saved_api_key && 'connected' === $saved_connect_status) {
 			return true;
 		}
 		return false;

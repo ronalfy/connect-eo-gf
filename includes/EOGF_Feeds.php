@@ -171,9 +171,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	 * @return bool
 	 */
 	public function can_create_feed() {
-
-		false;
-
+		return EmailOctopusAPI::is_connected();
 	}
 
 }
