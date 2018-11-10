@@ -53,14 +53,54 @@ class EOGF_API_Helper {
 	}
 
 	/**
-	 * Checks for a valid connected API key
+	 * Gets a list from the EmailOctopus API
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 *
+	 * @return array List content if successful
+	 */
+	public static function get_list()
+	{
+		$gforms_api_options = get_option('emailoctopus_gf_settings', false);
+		$saved_api_key = isset( $gforms_api_options['api_key'] ) ? $gforms_api_options['api_key'] : false;
+		$saved_connect_status = isset( $gforms_api_options['connected'] ) ? $gforms_api_options['connected'] : false;
+
+		if ($saved_api_key && $saved_connect_status === 'connected') {
+			// Format API call
+			$api_endpoint = 'https://emailoctopus.com/api/1.5/lists';
+			$api_url = add_query_arg(
+				array(
+					'api_key' => $saved_api_key,
+					'limit' => 100,
+					'page' => 1,
+				),
+				$api_endpoint
+			);
+			$api_response = wp_remote_get($api_url);
+			if (!is_wp_error($api_response)) {
+				$body = json_decode(wp_remote_retrieve_body($api_response));
+				if (isset($body->error)) {
+					return array();
+				}
+
+				return $body->data;
+			}
+		} else {
+			return array();
+		}
+	}
+
+	/**
+	 * Checks for a valid connected API key
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @static
+	 *
 	 * @return bool Whether the API key is valid or not
 	 */
-	public function is_connected() {
+	public static function is_connected() {
 		// Check option for api key status
 		$gforms_api_options = get_option('emailoctopus_gf_settings', false);
 		$saved_api_key = isset( $gforms_api_options['api_key'] ) ? $gforms_api_options['api_key'] : false;

@@ -54,112 +54,105 @@ class EOGF_Feeds extends \GFFeedAddOn {
 
 		return array(
 			array(
-				'title'  => esc_html__( 'MailChimp Feed Settings', 'gravityformsmailchimp' ),
+				'title'  => esc_html__( 'EmailOctopus Feed Settings', 'emailoctopus-gravity-forms' ),
 				'fields' => array(
 					array(
 						'name'     => 'feedName',
-						'label'    => esc_html__( 'Name', 'gravityformsmailchimp' ),
+						'label'    => esc_html__( 'Name', 'emailoctopus-gravity-forms' ),
 						'type'     => 'text',
 						'required' => true,
 						'class'    => 'medium',
 						'tooltip'  => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'Name', 'gravityformsmailchimp' ),
-							esc_html__( 'Enter a feed name to uniquely identify this setup.', 'gravityformsmailchimp' )
+							esc_html__( 'Name', 'emailoctopus-gravity-forms' ),
+							esc_html__( 'Enter a feed name to uniquely identify this setup.', 'emailoctopus-gravity-forms' )
 						),
 					),
 					array(
-						'name'     => 'mailchimpList',
-						'label'    => esc_html__( 'MailChimp List', 'gravityformsmailchimp' ),
-						'type'     => 'mailchimp_list',
+						'name'     => 'emailoctopuslist',
+						'label'    => esc_html__( 'EmailOctopus List', 'emailoctopus-gravity-forms' ),
+						'type'     => 'emailoctopus_list',
 						'required' => true,
 						'tooltip'  => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'MailChimp List', 'gravityformsmailchimp' ),
-							esc_html__( 'Select the MailChimp list you would like to add your contacts to.', 'gravityformsmailchimp' )
-						),
-					),
-				),
-			),
-			array(
-				'dependency' => 'mailchimpList',
-				'fields'     => array(
-					array(
-						'name'      => 'mappedFields',
-						'label'     => esc_html__( 'Map Fields', 'gravityformsmailchimp' ),
-						'type'      => 'field_map',
-						'field_map' => $this->merge_vars_field_map(),
-						'tooltip'   => sprintf(
-							'<h6>%s</h6>%s',
-							esc_html__( 'Map Fields', 'gravityformsmailchimp' ),
-							esc_html__( 'Associate your MailChimp merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'gravityformsmailchimp' )
+							esc_html__( 'EmailOctopus List', 'emailoctopus-gravity-forms' ),
+							esc_html__( 'Select the EmailOctopus list you would like to add your contacts to.', 'emailoctopus-gravity-forms' )
 						),
 					),
 					array(
-						'name'       => 'interestCategories',
-						'label'      => esc_html__( 'Groups', 'gravityformsmailchimp' ),
-						'dependency' => array( $this, 'has_interest_categories' ),
-						'type'       => 'interest_categories',
-						'tooltip'    => sprintf(
-							'<h6>%s</h6>%s',
-							esc_html__( 'Groups', 'gravityformsmailchimp' ),
-							esc_html__( 'When one or more groups are enabled, users will be assigned to the groups in addition to being subscribed to the MailChimp list. When disabled, users will not be assigned to groups.', 'gravityformsmailchimp' )
-						),
-					),
-					array(
-						'name'    => 'options',
-						'label'   => esc_html__( 'Options', 'gravityformsmailchimp' ),
-						'type'    => 'checkbox',
-						'choices' => array(
+						'dependency' => 'emailoctopuslist',
+						'fields'     => array(
 							array(
-								'name'          => 'double_optin',
-								'label'         => esc_html__( 'Double Opt-In', 'gravityformsmailchimp' ),
-								'default_value' => 1,
-								'onclick'       => 'if(this.checked){jQuery("#mailchimp_doubleoptin_warning").hide();} else{jQuery("#mailchimp_doubleoptin_warning").show();}',
-								'tooltip'       => sprintf(
+								'name'      => 'mappedFields',
+								'label'     => esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
+								'type'      => 'field_map',
+								'field_map' => array(),
+								'tooltip'   => sprintf(
 									'<h6>%s</h6>%s',
-									esc_html__( 'Double Opt-In', 'gravityformsmailchimp' ),
-									esc_html__( 'When the double opt-in option is enabled, MailChimp will send a confirmation email to the user and will only add them to your MailChimp list upon confirmation.', 'gravityformsmailchimp' )
+									esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
+									esc_html__( 'Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'emailoctopus-gravity-forms' )
 								),
 							),
-							array(
-								'name'  => 'markAsVIP',
-								'label' => esc_html__( 'Mark subscriber as VIP', 'gravityformsmailchimp' ),
-							),
-						),
+							array( 'type' => 'save' ),
+						)
 					),
-					array(
-						'name'  => 'tags',
-						'type'  => 'text',
-						'class' => 'medium merge-tag-support mt-position-right mt-hide_all_fields',
-						'label' => esc_html__( 'Tags', 'gravityformsmailchimp' ),
-						'tooltip'       => sprintf(
-							'<h6>%s</h6>%s',
-							esc_html__( 'Tags', 'gravityformsmailchimp' ),
-							esc_html__( 'Associate tags to your MailChimp contacts with a comma separated list. (e.g. new lead, Gravity Forms, web source)', 'gravityformsmailchimp' )
-						),
-					),
-					array(
-						'name'  => 'note',
-						'type'  => 'textarea',
-						'class' => 'medium merge-tag-support mt-position-right mt-hide_all_fields',
-						'label' => esc_html__( 'Note', 'gravityformsmailchimp' ),
-					),
-					array(
-						'name'    => 'optinCondition',
-						'label'   => esc_html__( 'Conditional Logic', 'gravityformsmailchimp' ),
-						'type'    => 'feed_condition',
-						'tooltip' => sprintf(
-							'<h6>%s</h6>%s',
-							esc_html__( 'Conditional Logic', 'gravityformsmailchimp' ),
-							esc_html__( 'When conditional logic is enabled, form submissions will only be exported to MailChimp when the conditions are met. When disabled all form submissions will be exported.', 'gravityformsmailchimp' )
-						),
-					),
-					array( 'type' => 'save' ),
 				),
 			),
 		);
+	}
 
+	/**
+	 * Define the markup for the emailoctopus_list type field.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @param array $field The field properties.
+	 * @param bool  $echo  Should the setting markup be echoed. Defaults to true.
+	 *
+	 * @return string
+	 */
+	public function settings_emailoctopus_list( $field, $echo = true ) {
+		$html = '';
+
+		$lists = EmailOctopusAPI::get_list();
+
+		if( ! empty( $lists ) ) {
+			// Initialize select options.
+			$options = array(
+				array(
+					'label' => esc_html__( 'Select an EmailOctopus List', 'emailoctopus-gravity-forms' ),
+					'value' => '',
+				),
+			);
+
+			// Loop through EmailOctopus lists.
+			foreach ( $lists as $list ) {
+
+				// Add list to select options.
+				$options[] = array(
+					'label' => esc_html( $list->name ),
+					'value' => esc_attr( $list->id ),
+				);
+			}
+
+			// Add select field properties.
+			$field['type']     = 'select';
+			$field['choices']  = $options;
+			$field['onchange'] = 'jQuery(this).parents("form").submit();';
+
+			// Generate select field.
+			$html = $this->settings_select( $field, false );
+
+		} else {
+			$html .= _( 'There are no lists to select from your account.', 'emailoctopus-gravity-forms');
+		}
+
+		if ( $echo ) {
+			echo $html;
+		}
+
+		return $html;
 	}
 
 	/**

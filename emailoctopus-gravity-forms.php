@@ -110,7 +110,7 @@ class EmailOctopus_Gravity_Forms {
 		if ( ! method_exists( 'GFForms', 'include_feed_addon_framework' ) ) {
 			return;
 		}
-
+		
 		// Initialize settings screen and feeds
 		GFAddOn::register( 'EmailOctopus\GF\API\EOGF_API' );
 		GFAddOn::register( 'EmailOctopus\GF\Feeds\EOGF_Feeds' );
