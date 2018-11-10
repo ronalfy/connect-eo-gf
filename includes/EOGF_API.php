@@ -45,7 +45,7 @@ class EOGF_API extends \GFAddOn {
 		return array(
 			array(
 				'title' => __( 'EmailOctopus API Key', 'emailoctopus-gravity-forms' ),
-				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'emailoctopus-gravity-forms') . ' '. sprintf( __('Need help? <a href="%s">Please read our guide</a>', 'emailoctopus-gravity-forms'), 'https://mediaron.com/emailoctopus-for-gravity-forms/' ) . '</p>',
+				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'emailoctopus-gravity-forms') . ' '. sprintf( __('Need help? <a href="%s">Please read our guide</a>.', 'emailoctopus-gravity-forms'), 'https://mediaron.com/emailoctopus-for-gravity-forms/' ) . '</p>',
 				'fields'      => array(
 					array(
 						'name'              => 'eogf_api_key',
