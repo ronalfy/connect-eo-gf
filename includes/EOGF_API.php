@@ -1,5 +1,6 @@
 <?php
 namespace EmailOctopus\API;
+use EmailOctopus\API\Helper\EOGF_API_Helper as EmailOctopusAPI;
 \GFForms::include_addon_framework();
 class EOGF_API extends \GFAddOn {
 	protected $_version = '1.0.0';
@@ -44,14 +45,14 @@ class EOGF_API extends \GFAddOn {
 		return array(
 			array(
 				'title' => __( 'EmailOctopus API Key', 'emailoctopus-gravity-forms' ),
-				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'emailoctopus-gravity-forms') . '</p>',
+				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'emailoctopus-gravity-forms') . ' '. sprintf( __('Need help? <a href="%s">Please read our guide</a>', 'emailoctopus-gravity-forms'), 'https://mediaron.com/emailoctopus-for-gravity-forms/' ) . '</p>',
 				'fields'      => array(
 					array(
 						'name'              => 'eogf_api_key',
 						'tooltip' 			=> __( 'Enter your EmailOctopus API Key', 'emailoctopus-gravity-forms' ),
 						'label'             => __( 'API Key', 'emailoctopus-gravity-forms' ),
 						'type'              => 'text',
-						'class'             => 'small',
+						'class'             => 'medium',
 						'feedback_callback' => array( $this, 'initialize_api' )
 					),
 				)
@@ -59,7 +60,7 @@ class EOGF_API extends \GFAddOn {
 		);
 	}
 
-	public function initialize_api() {
-		
+	public function initialize_api( $api_key ) {
+		return EmailOctopusAPI::is_valid_api_key( $api_key );
 	}
 }
