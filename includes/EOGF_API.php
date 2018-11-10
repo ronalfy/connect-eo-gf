@@ -1,6 +1,6 @@
 <?php
-namespace EmailOctopus\API;
-use EmailOctopus\API\Helper\EOGF_API_Helper as EmailOctopusAPI;
+namespace EmailOctopus\GF\API;
+use EmailOctopus\GF\API\Helper\EOGF_API_Helper as EmailOctopusAPI;
 \GFForms::include_addon_framework();
 class EOGF_API extends \GFAddOn {
 	protected $_version = '1.0.0';

@@ -1,5 +1,5 @@
 <?php
-namespace EmailOctopus\API\Helper;
+namespace EmailOctopus\GF\API\Helper;
 class EOGF_API_Helper {
 	/**
 	 * Checks for a valid API key
