@@ -231,4 +231,40 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		return EmailOctopusAPI::is_connected();
 	}
 
+	/**
+	 * Returns the value to be displayed in the EmailOctopus List column.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @param array $feed The feed being included in the feed list.
+	 *
+	 * @return string
+	 */
+	public function get_column_value_emailoctopus_list_name( $feed ) {
+		$lists = EmailOctopusAPI::get_list();
+		$list_id = $feed['meta']['emailoctopuslist'];
+		foreach( $lists as $list ) {
+			if( $list_id === $list->id ) {
+				return $list->name;
+			}
+		}
+		return '';
+	}
+
+	/**
+	 * Configures which columns should be displayed on the feed list page.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function feed_list_columns() {
+		return array(
+			'feedName'            => esc_html__( 'Name', 'emailoctopus-gravity-forms' ),
+			'emailoctopus_list_name' => esc_html__( 'EmailOctopus List', 'emailoctopus-gravity-forms' ),
+		);
+	}
+
 }
