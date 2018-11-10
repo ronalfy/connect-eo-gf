@@ -112,7 +112,7 @@ class EmailOctopus_Gravity_Forms {
 		}
 
 		// Initialize settings screen and feeds
-		GFAddOn::register( 'EOGF_API' );
+		GFAddOn::register( 'EmailOctopus\API\EOGF_API' );
 		//GFAddOn::register( 'EmailOctopus_Gravity_Forms_Feed' );
 	}
 
@@ -124,6 +124,8 @@ class EmailOctopus_Gravity_Forms {
 	 * @param string $class_name The class name
 	 */
 	public function loader( $class_name ) {
+		$parts = explode( '\\', $class_name );
+		$class_name = end( $parts );
 		if ( class_exists( $class_name, false ) || false === strpos( $class_name, 'EOGF' ) ) {
 			return;
 		}

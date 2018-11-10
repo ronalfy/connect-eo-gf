@@ -1,6 +1,7 @@
 <?php
-GFForms::include_addon_framework();
-class EOGF_API extends GFAddOn {
+namespace EmailOctopus\API;
+\GFForms::include_addon_framework();
+class EOGF_API extends \GFAddOn {
 	protected $_version = '1.0.0';
 	protected $_min_gravityforms_version = '2.3.0';
 	protected $_slug = 'EOGF_API';
