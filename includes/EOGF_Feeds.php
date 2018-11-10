@@ -41,6 +41,60 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	}
 
 	/**
+	 * Return an array of EmailOctopus list fields which can be mapped to the Form fields/entry meta.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @return array
+	 */
+	public function merge_vars_field_map() {
+
+		// Initialize field map array.
+		$field_map = array(
+			'EmailAddress' => array(
+				'name'       => 'EmailAddress',
+				'label'      => esc_html__( 'Email Address', 'emailoctopus-gravity-forms' ),
+				'required'   => true,
+				'field_type' => array( 'email', 'hidden' ),
+			),
+		);
+
+		// Get current list ID.
+		$list_id = $this->get_setting( 'emailoctopuslist' );
+
+		// Get API List
+		$lists = EmailOctopusAPI::get_list();
+		$selected_list = false;
+		foreach( $lists as $list ) {
+			if( $list_id = $list->id ) {
+				$selected_list = $list;
+				break;
+			}
+		}
+
+		$selected_list_fields = $selected_list->fields;
+		foreach( $selected_list_fields as $field ) {
+
+			// Define required field type.
+			$field_type = null;
+
+			if( 'EmailAddress' === $field->tag ) {
+				$field_type = array( 'email', 'hidden' );
+			}
+
+			$field_map[ $field->tag ] = array(
+				'name'       => $field->tag,
+				'label'      => $field->label,
+				'required'   => 'EmailAddress' === $field->tag ? true : false,
+				'field_type' => $field_type,
+			);
+		}
+
+		return $field_map;
+	}
+
+	/**
 	 * Form settings page title
 	 *
 	 * @since 1.0.0
@@ -84,6 +138,17 @@ class EOGF_Feeds extends \GFFeedAddOn {
 			array(
 				'dependency' => 'emailoctopuslist',
 				'fields'     => array(
+					array(
+						'name'      => 'mappedFields',
+						'label'     => esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
+						'type'      => 'field_map',
+						'field_map' => $this->merge_vars_field_map(),
+						'tooltip'   => sprintf(
+							'<h6>%s</h6>%s',
+							esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
+							esc_html__( 'Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'emailoctopus-gravity-forms' )
+						),
+					),
 					array(
 						'name'    => 'optinCondition',
 						'label'   => esc_html__( 'Conditional Logic', 'emailoctopus-gravity-forms' ),
