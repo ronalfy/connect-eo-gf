@@ -79,24 +79,18 @@ class EOGF_Feeds extends \GFFeedAddOn {
 							esc_html__( 'Select the EmailOctopus list you would like to add your contacts to.', 'emailoctopus-gravity-forms' )
 						),
 					),
-					array(
-						'dependency' => 'emailoctopuslist',
-						'fields'     => array(
-							array(
-								'name'      => 'mappedFields',
-								'label'     => esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
-								'type'      => 'field_map',
-								'field_map' => array(),
-								'tooltip'   => sprintf(
-									'<h6>%s</h6>%s',
-									esc_html__( 'Map Fields', 'emailoctopus-gravity-forms' ),
-									esc_html__( 'Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'emailoctopus-gravity-forms' )
-								),
-							),
-							array( 'type' => 'save' ),
-						)
-					),
 				),
+			),
+			array(
+				'dependency' => 'emailoctopuslist',
+				'fields'     => array(
+					array( 'type' => 'save' ),
+					array(
+						'type'  => 'feed_condition',
+						'name'  => 'emailoctopus',
+						'label' => 'Feed Condition',
+					)
+				)
 			),
 		);
 	}
