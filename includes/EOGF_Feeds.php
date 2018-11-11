@@ -224,6 +224,53 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	}
 
 	/**
+	 * Process the feed, subscribe the user to the list.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @param array $feed  The feed object to be processed.
+	 * @param array $entry The entry object currently being processed.
+	 * @param array $form  The form object currently being processed.
+	 *
+	 * @return array
+	 */
+	public function process_feed( $feed, $entry, $form ) {
+		// Get field map values.
+		$field_map = $this->get_field_map_fields( $feed, 'mappedFields' );
+
+		// Get mapped email address.
+		$email = $this->get_field_value( $form, $entry, $field_map['EmailAddress'] );
+		
+		// If email address is invalid, log error and return.
+		if ( GFCommon::is_invalid_or_empty_email( $email ) ) {
+			$this->add_feed_error( esc_html__( 'A valid Email address must be provided.', 'emailoctopus-gravity-forms' ), $feed, $entry, $form );
+			return $entry;
+		}
+
+		// Loop through field map.
+		foreach ( $field_map as $name => $field_id ) {
+
+			// If no field is mapped, skip it.
+			if ( rgblank( $field_id ) ) {
+				continue;
+			}
+
+			// If this is the email field, skip it.
+			if ( $name === 'EmailAddress' ) {
+				continue;
+			}
+
+			// Get merge field.
+			$merge_field = $this->get_list_merge_field( $feed['meta']['emailoctopuslist'], $name );
+		}
+	}
+
+	public_function get_list_merge_field() {
+
+	}
+
+	/**
 	 * Define the markup for the emailoctopus_list type field.
 	 *
 	 * @since  1.0.0
