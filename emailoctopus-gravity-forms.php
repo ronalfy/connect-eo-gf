@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: EmailOctopus for Gravity Forms
-Plugin URI: http://wordpress.org/extend/plugins/emailoctopus-gravity-forms/
+Plugin URI: http://wordpress.org/extend/plugins/emailoctopus-for-gravity-forms/
 Description: EmailOctopus add-on for Gravity Forms
 Author: Ronald Huereca
 Version: 1.0.0
 Requires at least: 4.9
 Author URI: https://mediaron.com
 Contributors: ronalfy
-Text Domain: emailoctopus-gravity-forms
+Text Domain: emailoctopus-for-gravity-forms
 Domain Path: /languages
 */ 
 
@@ -40,7 +40,7 @@ class EmailOctopus_Gravity_Forms {
 	 * @since 1.0.0
 	 */
 	private function __construct() {
-		load_plugin_textdomain( 'emailoctopus-gravity-forms', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'emailoctopus-for-gravity-forms', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		spl_autoload_register( array( $this, 'loader' ) );
 
@@ -69,7 +69,7 @@ class EmailOctopus_Gravity_Forms {
 	public static function check_plugin() {
 		if( ! self::check_php_version() ) {
 			deactivate_plugins( GFGAET::get_plugin_basename() );
-			exit( sprintf( esc_html__( 'EmailOctopus for Gravity Forms requires PHP version 5.6 and up. You are currently running PHP version %s.', 'emailoctopus-gravity-forms' ), esc_html( PHP_VERSION ) ) );
+			exit( sprintf( esc_html__( 'EmailOctopus for Gravity Forms requires PHP version 5.6 and up. You are currently running PHP version %s.', 'emailoctopus-for-gravity-forms' ), esc_html( PHP_VERSION ) ) );
 		}
 	}
 
