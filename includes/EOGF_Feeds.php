@@ -233,9 +233,10 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	 * @param array $entry The entry object currently being processed.
 	 * @param array $form  The form object currently being processed.
 	 *
-	 * @return array
+	 * @return void
 	 */
 	public function process_feed( $feed, $entry, $form ) {
+		
 		// Get field map values.
 		$field_map = $this->get_field_map_fields( $feed, 'mappedFields' );
 
@@ -243,12 +244,16 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		$email = $this->get_field_value( $form, $entry, $field_map['EmailAddress'] );
 		
 		// If email address is invalid, log error and return.
-		if ( GFCommon::is_invalid_or_empty_email( $email ) ) {
+		if ( \GFCommon::is_invalid_or_empty_email( $email ) ) {
 			$this->add_feed_error( esc_html__( 'A valid Email address must be provided.', 'emailoctopus-gravity-forms' ), $feed, $entry, $form );
 			return $entry;
 		}
 
+		// Initialize array to store merge vars.
+		$merge_vars = array();
+
 		// Loop through field map.
+		$body = array();
 		foreach ( $field_map as $name => $field_id ) {
 
 			// If no field is mapped, skip it.
@@ -256,18 +261,60 @@ class EOGF_Feeds extends \GFFeedAddOn {
 				continue;
 			}
 
-			// If this is the email field, skip it.
-			if ( $name === 'EmailAddress' ) {
+			if( 'EmailAddress' === $name ) {
+				$body['email_address'] = $this->get_field_value( $form, $entry, $field_id );
 				continue;
 			}
 
-			// Get merge field.
-			$merge_field = $this->get_list_merge_field( $feed['meta']['emailoctopuslist'], $name );
+			// Set merge var name to current field map name.
+			$this->merge_var_name = $name;
+
+			// Get field object.
+			$field = \GFFormsModel::get_field( $form, $field_id );
+
+			// Get field value.
+			$field_value = $this->get_field_value( $form, $entry, $field_id );
+
+			if ( empty( $field_value ) ) { 
+				continue;
+			}
+
+			$merge_vars[ $name ] = $field_value;
 		}
+
+		// Get API Endpoint
+		$api = sprintf( 'https://emailoctopus.com/api/1.5/lists/%s/contacts', sanitize_text_field( $feed['meta']['emailoctopuslist'] ) );
+
+		// Get API Key
+		$gforms_api_options = get_option('emailoctopus_gf_settings', false);
+		$saved_api_key = isset( $gforms_api_options['api_key'] ) ? $gforms_api_options['api_key'] : false;
+		$saved_connect_status = isset( $gforms_api_options['connected'] ) ? $gforms_api_options['connected'] : false;
+		$body['api_key'] = $saved_api_key;
+		
+		// Add field values to body
+		$body['fields'] = $merge_vars;
+
+		// Perform Sending Data to EmailOctopus API
+		$response = wp_remote_post($api, array('body' => $body));
+        $response_body = wp_remote_retrieve_body($response);
+		$response_body = json_decode($response_body);
+		
+		// Error handling
+        if (isset($response_body->error)) {
+			// Log that the subscriber could not be added.
+			$this->add_feed_error( sprintf( esc_html__( 'Unable to add subscriber: %s', 'emailoctopus-gravity-forms' ), $response_body->error->message ), $feed, $entry, $form );
+		}
+		
+		// Otherwise smooth sailing!
+		return;
 	}
 
-	public_function get_list_merge_field() {
-
+	public function get_list_merge_fields( $list_id = '' ) {
+		
+		// If merge fields have already been retrieved, return.
+		if ( isset( $this->merge_fields[ $list_id ] ) ) {
+			return $this->merge_fields[ $list_id ];
+		}
 	}
 
 	/**
