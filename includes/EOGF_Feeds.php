@@ -163,6 +163,11 @@ class EOGF_Feeds extends \GFFeedAddOn {
 						),
 					),
 					array(
+						'name'    => 'options',
+						'label'   => esc_html__( 'Options', 'emailoctopus-gravity-forms' ),
+						'type'    => 'emailoctopus_optin',
+					),
+					array(
 						'name'    => 'optinCondition',
 						'label'   => esc_html__( 'Conditional Logic', 'emailoctopus-gravity-forms' ),
 						'type'    => 'feed_condition',
@@ -176,6 +181,46 @@ class EOGF_Feeds extends \GFFeedAddOn {
 				)
 			),
 		);
+	}
+
+	/**
+	 * Define the markup for the opt-in checkbox.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 *
+	 * @param array $field The field properties.
+	 * @param bool  $echo  Should the setting markup be echoed. Defaults to true.
+	 *
+	 * @return string
+	 */
+	public function settings_emailoctopus_optin( $field, $echo = true ) {
+		$html = '';
+
+		$lists = EmailOctopusAPI::get_list();
+
+		// Get current list ID.
+		$list_id = $this->get_setting( 'emailoctopuslist' );
+		$selected_list = false;
+		foreach( $lists as $list ) {
+			if( $list_id === $list->id ) {
+				$selected_list = $list;
+				break;
+			}
+		}
+
+		$double_opt_in = $selected_list->double_opt_in;
+		if( $double_opt_in ) {
+			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" checked="checked" /> %s</label>', sprintf( __('Double opt-in is enabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','emailoctopus-gravity-forms'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
+		} else {
+			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" /> %s</label>', sprintf( __('Double opt-in is disabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','emailoctopus-gravity-forms'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
+		}
+		
+		if ( $echo ) {
+			echo $html;
+		}
+
+		return $html;
 	}
 
 	/**
