@@ -62,12 +62,15 @@ class EOGF_Feeds extends \GFFeedAddOn {
 
 		// Get current list ID.
 		$list_id = $this->get_setting( 'emailoctopuslist' );
+		if( empty( $list_id ) ) {
+			return array();
+		}
 
 		// Get API List
 		$lists = EmailOctopusAPI::get_list();
 		$selected_list = false;
 		foreach( $lists as $list ) {
-			if( $list_id = $list->id ) {
+			if( $list_id === $list->id ) {
 				$selected_list = $list;
 				break;
 			}
@@ -81,6 +84,10 @@ class EOGF_Feeds extends \GFFeedAddOn {
 
 			if( 'EmailAddress' === $field->tag ) {
 				$field_type = array( 'email', 'hidden' );
+			}
+
+			if( 'NUMBER' === $field->type ) {
+				$field_type = array( 'number' );
 			}
 
 			$field_map[ $field->tag ] = array(
@@ -104,6 +111,12 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		return __( 'EmailOctopus Settings', 'emailoctopus-gravity-forms' );
 	}
 
+	/**
+	 * Feed settings
+	 *
+	 * @since 1.0.0
+	 * @return array feed settings
+	 */
 	public function feed_settings_fields() {
 
 		return array(
