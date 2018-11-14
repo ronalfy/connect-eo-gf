@@ -1,4 +1,4 @@
-=== EmailOctopus Gravity Forms ===
+=== Connect EmailOctopus and Gravity Forms ===
 Contributors: ronalfy
 Tags: gravity forms, emailoctopus
 Requires at least:4.8
@@ -23,7 +23,7 @@ Read my full guide here: <a href="https://mediaron.com/emailoctopus-for-gravity-
 - Gravity Forms 2.3+
 - EmailOctopus Subscription
 
-Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub</a> Pull requests are welcome..
+Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub</a>. Pull requests are welcome.
 
 == Installation ==
 
@@ -58,19 +58,21 @@ Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub
 
 = Is this an official add-on? =
 
-No, but I have received permission from EmailOctopus and Gravity Forms to use their name. I fully intend on supporting this plugin myself.
-
-
+No, this is a third-party add-on for both services
 
 == Screenshots ==
 
 1. API Key Settings
 2. Feed Settings
-3. Field Mapping
+3. Feed Settings
+4. Selecting an EmailOctopus list
+5. Mapping EmailOctopus fields to Gravity Forms fields
+6. Conditional Logic
 
 == Changelog ==
 
 = 1.0.0 =
+* Released 2018-11-14
 * Initial release.
 
 == Upgrade Notice ==
