@@ -13,7 +13,7 @@ Integrate EmailOctopus with Gravity Forms
 
 == Description ==
 
-This plugin provides an easy way to integrate <a href="https://emailoctopus">EmailOctopus</a> with <a href="https://www.gravityforms.com/">Gravity Forms</a>
+This plugin provides an easy way to integrate <a href="https://emailoctopus.com">EmailOctopus</a> with <a href="https://www.gravityforms.com/">Gravity Forms</a>
 
 Read my full guide here: <a href="https://mediaron.com/emailoctopus-for-gravity-forms/">Integrating EmailOctopus with Gravity Forms</a>.
 
