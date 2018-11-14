@@ -23,7 +23,7 @@ Read my full guide here: <a href="https://mediaron.com/emailoctopus-for-gravity-
 - Gravity Forms 2.3+
 - EmailOctopus Subscription
 
-Development happens on <a href="https://github.com/ronalfy/emailoctopus-for-gravity-forms">GitHub</a> Pull requests are welcome..
+Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub</a> Pull requests are welcome..
 
 == Installation ==
 
@@ -42,15 +42,15 @@ Development happens on <a href="https://github.com/ronalfy/emailoctopus-for-grav
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
-3. Select `emailoctopus-for-gravity-forms` from your computer
+3. Select `connect-eo-gf` from your computer
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 
 = Using FTP =
 
-1. Download `emailoctopus-for-gravity-forms.zip`
-2. Extract the `emailoctopus-for-gravity-forms` directory to your computer
-3. Upload the `emailoctopus-for-gravity-forms` directory to the `/wp-content/plugins/` directory
+1. Download `connect-eo-gf.zip`
+2. Extract the `connect-eo-gf` directory to your computer
+3. Upload the `connect-eo-gf` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 
 

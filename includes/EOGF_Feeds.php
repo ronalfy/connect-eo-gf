@@ -6,7 +6,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	protected $_version = '1.0.0';
 	protected $_min_gravityforms_version = '2.3.0';
 	protected $_slug = 'EOGF_API';
-	protected $_path = 'emailoctopus-for-gravity-forms/emailoctopus-for-gravity-forms';
+	protected $_path = 'connect-eo-gf/connect-eo-gf';
 	protected $_full_path = __FILE__;
 	protected $_title = 'EmailOctopus';
 	protected $_short_title = 'EmailOctopus';
@@ -54,7 +54,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		$field_map = array(
 			'EmailAddress' => array(
 				'name'       => 'EmailAddress',
-				'label'      => esc_html__( 'Email Address', 'emailoctopus-for-gravity-forms' ),
+				'label'      => esc_html__( 'Email Address', 'connect-eo-gf' ),
 				'required'   => true,
 				'field_type' => array( 'email', 'hidden' ),
 			),
@@ -108,7 +108,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	 * @return string Form Settings Title
 	 */
 	public function feed_settings_title() {
-		return __( 'EmailOctopus Settings', 'emailoctopus-for-gravity-forms' );
+		return __( 'EmailOctopus Settings', 'connect-eo-gf' );
 	}
 
 	/**
@@ -121,29 +121,29 @@ class EOGF_Feeds extends \GFFeedAddOn {
 
 		return array(
 			array(
-				'title'  => esc_html__( 'EmailOctopus Feed Settings', 'emailoctopus-for-gravity-forms' ),
+				'title'  => esc_html__( 'EmailOctopus Feed Settings', 'connect-eo-gf' ),
 				'fields' => array(
 					array(
 						'name'     => 'feedName',
-						'label'    => esc_html__( 'Name', 'emailoctopus-for-gravity-forms' ),
+						'label'    => esc_html__( 'Name', 'connect-eo-gf' ),
 						'type'     => 'text',
 						'required' => true,
 						'class'    => 'medium',
 						'tooltip'  => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'Name', 'emailoctopus-for-gravity-forms' ),
-							esc_html__( 'Enter a feed name to uniquely identify this setup.', 'emailoctopus-for-gravity-forms' )
+							esc_html__( 'Name', 'connect-eo-gf' ),
+							esc_html__( 'Enter a feed name to uniquely identify this setup.', 'connect-eo-gf' )
 						),
 					),
 					array(
 						'name'     => 'emailoctopuslist',
-						'label'    => esc_html__( 'EmailOctopus List', 'emailoctopus-for-gravity-forms' ),
+						'label'    => esc_html__( 'EmailOctopus List', 'connect-eo-gf' ),
 						'type'     => 'emailoctopus_list',
 						'required' => true,
 						'tooltip'  => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'EmailOctopus List', 'emailoctopus-for-gravity-forms' ),
-							esc_html__( 'Select the EmailOctopus list you would like to add your contacts to.', 'emailoctopus-for-gravity-forms' )
+							esc_html__( 'EmailOctopus List', 'connect-eo-gf' ),
+							esc_html__( 'Select the EmailOctopus list you would like to add your contacts to.', 'connect-eo-gf' )
 						),
 					),
 				),
@@ -153,28 +153,28 @@ class EOGF_Feeds extends \GFFeedAddOn {
 				'fields'     => array(
 					array(
 						'name'      => 'mappedFields',
-						'label'     => esc_html__( 'Map Fields', 'emailoctopus-for-gravity-forms' ),
+						'label'     => esc_html__( 'Map Fields', 'connect-eo-gf' ),
 						'type'      => 'field_map',
 						'field_map' => $this->merge_vars_field_map(),
 						'tooltip'   => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'Map Fields', 'emailoctopus-for-gravity-forms' ),
-							esc_html__( 'Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'emailoctopus-for-gravity-forms' )
+							esc_html__( 'Map Fields', 'connect-eo-gf' ),
+							esc_html__( 'Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list.', 'connect-eo-gf' )
 						),
 					),
 					array(
 						'name'    => 'options',
-						'label'   => esc_html__( 'Options', 'emailoctopus-for-gravity-forms' ),
+						'label'   => esc_html__( 'Options', 'connect-eo-gf' ),
 						'type'    => 'emailoctopus_optin',
 					),
 					array(
 						'name'    => 'optinCondition',
-						'label'   => esc_html__( 'Conditional Logic', 'emailoctopus-for-gravity-forms' ),
+						'label'   => esc_html__( 'Conditional Logic', 'connect-eo-gf' ),
 						'type'    => 'feed_condition',
 						'tooltip' => sprintf(
 							'<h6>%s</h6>%s',
-							esc_html__( 'Conditional Logic', 'emailoctopus-for-gravity-forms' ),
-							esc_html__( 'When conditional logic is enabled, form submissions will only be exported to EmailOctopus when the conditions are met. When disabled all form submissions will be exported.', 'emailoctopus-for-gravity-forms' )
+							esc_html__( 'Conditional Logic', 'connect-eo-gf' ),
+							esc_html__( 'When conditional logic is enabled, form submissions will only be exported to EmailOctopus when the conditions are met. When disabled all form submissions will be exported.', 'connect-eo-gf' )
 						),
 					),
 					array( 'type' => 'save' ),
@@ -211,9 +211,9 @@ class EOGF_Feeds extends \GFFeedAddOn {
 
 		$double_opt_in = $selected_list->double_opt_in;
 		if( $double_opt_in ) {
-			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" checked="checked" /> %s</label>', sprintf( __('Double opt-in is enabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','emailoctopus-for-gravity-forms'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
+			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" checked="checked" /> %s</label>', sprintf( __('Double opt-in is enabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','connect-eo-gf'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
 		} else {
-			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" /> %s</label>', sprintf( __('Double opt-in is disabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','emailoctopus-for-gravity-forms'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
+			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" /> %s</label>', sprintf( __('Double opt-in is disabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','connect-eo-gf'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
 		}
 		
 		if ( $echo ) {
@@ -245,7 +245,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		
 		// If email address is invalid, log error and return.
 		if ( \GFCommon::is_invalid_or_empty_email( $email ) ) {
-			$this->add_feed_error( esc_html__( 'A valid Email address must be provided.', 'emailoctopus-for-gravity-forms' ), $feed, $entry, $form );
+			$this->add_feed_error( esc_html__( 'A valid Email address must be provided.', 'connect-eo-gf' ), $feed, $entry, $form );
 			return $entry;
 		}
 
@@ -302,7 +302,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		// Error handling
         if (isset($response_body->error)) {
 			// Log that the subscriber could not be added.
-			$this->add_feed_error( sprintf( esc_html__( 'Unable to add subscriber: %s', 'emailoctopus-for-gravity-forms' ), $response_body->error->message ), $feed, $entry, $form );
+			$this->add_feed_error( sprintf( esc_html__( 'Unable to add subscriber: %s', 'connect-eo-gf' ), $response_body->error->message ), $feed, $entry, $form );
 		}
 		
 		// Otherwise smooth sailing!
@@ -337,7 +337,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 			// Initialize select options.
 			$options = array(
 				array(
-					'label' => esc_html__( 'Select an EmailOctopus List', 'emailoctopus-for-gravity-forms' ),
+					'label' => esc_html__( 'Select an EmailOctopus List', 'connect-eo-gf' ),
 					'value' => '',
 				),
 			);
@@ -361,7 +361,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 			$html = $this->settings_select( $field, false );
 
 		} else {
-			$html .= _( 'There are no lists to select from your account.', 'emailoctopus-for-gravity-forms');
+			$html .= _( 'There are no lists to select from your account.', 'connect-eo-gf');
 		}
 
 		if ( $echo ) {
@@ -414,8 +414,8 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	 */
 	public function feed_list_columns() {
 		return array(
-			'feedName'            => esc_html__( 'Name', 'emailoctopus-for-gravity-forms' ),
-			'emailoctopus_list_name' => esc_html__( 'EmailOctopus List', 'emailoctopus-for-gravity-forms' ),
+			'feedName'            => esc_html__( 'Name', 'connect-eo-gf' ),
+			'emailoctopus_list_name' => esc_html__( 'EmailOctopus List', 'connect-eo-gf' ),
 		);
 	}
 

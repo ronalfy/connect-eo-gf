@@ -6,7 +6,7 @@ class EOGF_API extends \GFAddOn {
 	protected $_version = '1.0.0';
 	protected $_min_gravityforms_version = '2.3.0';
 	protected $_slug = 'EOGF_API';
-	protected $_path = 'emailoctopus-for-gravity-forms/emailoctopus-for-gravity-forms';
+	protected $_path = 'connect-eo-gf/connect-eo-gf';
 	protected $_full_path = __FILE__;
 	protected $_title = 'EmailOctopus';
 	protected $_short_title = 'EmailOctopus';
@@ -44,13 +44,13 @@ class EOGF_API extends \GFAddOn {
 	public function plugin_settings_fields() {
 		return array(
 			array(
-				'title' => __( 'EmailOctopus API Key', 'emailoctopus-for-gravity-forms' ),
-				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'emailoctopus-for-gravity-forms') . ' '. sprintf( __('Need help? <a href="%s">Please read our guide</a>.', 'emailoctopus-for-gravity-forms'), 'https://mediaron.com/emailoctopus-for-gravity-forms/' ) . '</p>',
+				'title' => __( 'EmailOctopus API Key', 'connect-eo-gf' ),
+				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'connect-eo-gf') . ' '. sprintf( __('Need help? <a href="%s">Please read our guide</a>.', 'connect-eo-gf'), 'https://mediaron.com/connect-eo-gf/' ) . '</p>',
 				'fields'      => array(
 					array(
 						'name'              => 'eogf_api_key',
-						'tooltip' 			=> __( 'Enter your EmailOctopus API Key', 'emailoctopus-for-gravity-forms' ),
-						'label'             => __( 'API Key', 'emailoctopus-for-gravity-forms' ),
+						'tooltip' 			=> __( 'Enter your EmailOctopus API Key', 'connect-eo-gf' ),
+						'label'             => __( 'API Key', 'connect-eo-gf' ),
 						'type'              => 'text',
 						'class'             => 'medium',
 						'feedback_callback' => array( $this, 'initialize_api' )
