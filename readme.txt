@@ -2,7 +2,7 @@
 Contributors: ronalfy
 Tags: gravity forms, emailoctopus
 Requires at least:4.8
-Tested up to: 5.0
+Tested up to: 5.1
 Stable tag: 1.0.0
 Requires PHP: 5.6
 Donate link: https://mediaron.com/give/
@@ -17,7 +17,7 @@ This plugin provides an easy way to integrate <a href="https://emailoctopus.com"
 
 Read my full guide here: <a href="https://mediaron.com/emailoctopus-for-gravity-forms/">Integrating EmailOctopus with Gravity Forms</a>.
 
-> Please note that this is a third-party plugin and is not affiliated with EmailOctopus or Gravity Forms. 
+> Please note that this is a third-party plugin and is not affiliated with EmailOctopus or Gravity Forms.
 
 = Minimum Requirements =
 - Gravity Forms 2.3+
@@ -77,5 +77,5 @@ No, this is a third-party add-on for both services
 
 == Upgrade Notice ==
 
-= 1.0.0 = 
+= 1.0.0 =
 Initial release.
