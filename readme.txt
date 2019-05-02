@@ -2,7 +2,7 @@
 Contributors: ronalfy
 Tags: gravity forms, emailoctopus
 Requires at least:4.8
-Tested up to: 5.1
+Tested up to: 5.2
 Stable tag: 1.0.0
 Requires PHP: 5.6
 Donate link: https://mediaron.com/give/
