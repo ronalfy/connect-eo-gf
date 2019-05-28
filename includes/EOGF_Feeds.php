@@ -1,7 +1,7 @@
 <?php
 namespace EmailOctopus\GF\Feeds;
 use EmailOctopus\GF\API\Helper\EOGF_API_Helper as EmailOctopusAPI;
-\GFForms::include_addon_framework();
+\GFForms::include_feed_addon_framework();
 class EOGF_Feeds extends \GFFeedAddOn {
 	protected $_version = '1.0.0';
 	protected $_min_gravityforms_version = '2.3.0';
@@ -215,7 +215,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		} else {
 			$html .= sprintf( '<label><input type="checkbox" disabled="disabled" /> %s</label>', sprintf( __('Double opt-in is disabled on this list. Go to <a href="%s" target="_blank">your EmailOctopus dashboard</a> to make changes.','connect-eo-gf'), esc_url( 'https://emailoctopus.com/lists/' . $list_id . '/info-and-settings/opt-in-email') ) );
 		}
-		
+
 		if ( $echo ) {
 			echo $html;
 		}
@@ -236,13 +236,13 @@ class EOGF_Feeds extends \GFFeedAddOn {
 	 * @return void
 	 */
 	public function process_feed( $feed, $entry, $form ) {
-		
+
 		// Get field map values.
 		$field_map = $this->get_field_map_fields( $feed, 'mappedFields' );
 
 		// Get mapped email address.
 		$email = $this->get_field_value( $form, $entry, $field_map['EmailAddress'] );
-		
+
 		// If email address is invalid, log error and return.
 		if ( \GFCommon::is_invalid_or_empty_email( $email ) ) {
 			$this->add_feed_error( esc_html__( 'A valid Email address must be provided.', 'connect-eo-gf' ), $feed, $entry, $form );
@@ -275,7 +275,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 			// Get field value.
 			$field_value = $this->get_field_value( $form, $entry, $field_id );
 
-			if ( empty( $field_value ) ) { 
+			if ( empty( $field_value ) ) {
 				continue;
 			}
 
@@ -290,7 +290,7 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		$saved_api_key = isset( $gforms_api_options['api_key'] ) ? $gforms_api_options['api_key'] : false;
 		$saved_connect_status = isset( $gforms_api_options['connected'] ) ? $gforms_api_options['connected'] : false;
 		$body['api_key'] = $saved_api_key;
-		
+
 		// Add field values to body
 		$body['fields'] = $merge_vars;
 
@@ -298,19 +298,19 @@ class EOGF_Feeds extends \GFFeedAddOn {
 		$response = wp_remote_post($api, array('body' => $body));
         $response_body = wp_remote_retrieve_body($response);
 		$response_body = json_decode($response_body);
-		
+
 		// Error handling
         if (isset($response_body->error)) {
 			// Log that the subscriber could not be added.
 			$this->add_feed_error( sprintf( esc_html__( 'Unable to add subscriber: %s', 'connect-eo-gf' ), $response_body->error->message ), $feed, $entry, $form );
 		}
-		
+
 		// Otherwise smooth sailing!
 		return;
 	}
 
 	public function get_list_merge_fields( $list_id = '' ) {
-		
+
 		// If merge fields have already been retrieved, return.
 		if ( isset( $this->merge_fields[ $list_id ] ) ) {
 			return $this->merge_fields[ $list_id ];

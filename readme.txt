@@ -3,7 +3,7 @@ Contributors: ronalfy
 Tags: gravity forms, emailoctopus
 Requires at least:4.8
 Tested up to: 5.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 5.6
 Donate link: https://mediaron.com/give/
 License: GPLv2 or later
@@ -71,11 +71,18 @@ No, this is a third-party add-on for both services
 
 == Changelog ==
 
+= 1.0.1 =
+* Released 2019-05-28
+* Fixing PHP error for feeds
+
 = 1.0.0 =
 * Released 2018-11-14
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Fixing PHP error for feeds.
 
 = 1.0.0 =
 Initial release.
