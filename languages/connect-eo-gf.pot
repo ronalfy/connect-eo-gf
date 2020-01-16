@@ -1,0 +1,137 @@
+# Copyright (C) 2019 Ronald Huereca
+# This file is distributed under the same license as the Connect EmailOctopus and Gravity Forms plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Connect EmailOctopus and Gravity Forms 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/connect-eo-gf\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-04-08T15:33:58+00:00\n"
+"PO-Revision-Date: 2019-04-08T15:33:58+00:00\n"
+"X-Generator: WP-CLI 2.0.1\n"
+"X-Domain: connect-eo-gf\n"
+
+#. Plugin Name of the plugin
+msgid "Connect EmailOctopus and Gravity Forms"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "http://wordpress.org/plugins/connect-eo-gf/"
+msgstr ""
+
+#. Description of the plugin
+msgid "EmailOctopus add-on for Gravity Forms"
+msgstr ""
+
+#. Author of the plugin
+msgid "Ronald Huereca"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://mediaron.com"
+msgstr ""
+
+#: connect-eo-gf.php:72
+msgid "EmailOctopus for Gravity Forms requires PHP version 5.6 and up. You are currently running PHP version %s."
+msgstr ""
+
+#: includes/EOGF_API.php:47
+msgid "EmailOctopus API Key"
+msgstr ""
+
+#: includes/EOGF_API.php:48
+msgid "Enter your EmailOctopus API Key."
+msgstr ""
+
+#: includes/EOGF_API.php:48
+msgid "Need help? <a href=\"%s\">Please read our guide</a>."
+msgstr ""
+
+#: includes/EOGF_API.php:52
+msgid "Enter your EmailOctopus API Key"
+msgstr ""
+
+#: includes/EOGF_API.php:53
+msgid "API Key"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:57
+msgid "Email Address"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:111
+msgid "EmailOctopus Settings"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:124
+msgid "EmailOctopus Feed Settings"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:128
+#: includes/EOGF_Feeds.php:134
+#: includes/EOGF_Feeds.php:417
+msgid "Name"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:135
+msgid "Enter a feed name to uniquely identify this setup."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:140
+#: includes/EOGF_Feeds.php:145
+#: includes/EOGF_Feeds.php:418
+msgid "EmailOctopus List"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:146
+msgid "Select the EmailOctopus list you would like to add your contacts to."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:156
+#: includes/EOGF_Feeds.php:161
+msgid "Map Fields"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:162
+msgid "Associate your EmailOctopus merge tags to the appropriate Gravity Form fields by selecting the appropriate form field from the list."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:167
+msgid "Options"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:172
+#: includes/EOGF_Feeds.php:176
+msgid "Conditional Logic"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:177
+msgid "When conditional logic is enabled, form submissions will only be exported to EmailOctopus when the conditions are met. When disabled all form submissions will be exported."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:214
+msgid "Double opt-in is enabled on this list. Go to <a href=\"%s\" target=\"_blank\">your EmailOctopus dashboard</a> to make changes."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:216
+msgid "Double opt-in is disabled on this list. Go to <a href=\"%s\" target=\"_blank\">your EmailOctopus dashboard</a> to make changes."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:248
+msgid "A valid Email address must be provided."
+msgstr ""
+
+#: includes/EOGF_Feeds.php:305
+msgid "Unable to add subscriber: %s"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:340
+msgid "Select an EmailOctopus List"
+msgstr ""
+
+#: includes/EOGF_Feeds.php:364
+msgid "There are no lists to select from your account."
+msgstr ""
