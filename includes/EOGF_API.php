@@ -45,7 +45,7 @@ class EOGF_API extends \GFAddOn {
 		return array(
 			array(
 				'title' => __( 'EmailOctopus API Key', 'connect-eo-gf' ),
-				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'connect-eo-gf') . '</p><blockquote>Gravity Forms now has an official add-on for EmailOctopus. It is recommended <a href="https://docs.gravityforms.com/category/add-ons-gravity-forms/emailoctopus-add-on/">to use the official add-on</a> instead of this plugin.</blockquote>',
+				'description' => '<p>' . __( 'Enter your EmailOctopus API Key.', 'connect-eo-gf') . '</p><div class="notice notice-error"><p><strong>Gravity Forms now has an official add-on for EmailOctopus. It is recommended <a href="https://docs.gravityforms.com/category/add-ons-gravity-forms/emailoctopus-add-on/">to use the official add-on</a> instead of this plugin.</strong></p></div>',
 				'fields'      => array(
 					array(
 						'name'              => 'eogf_api_key',
