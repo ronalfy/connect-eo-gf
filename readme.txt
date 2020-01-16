@@ -2,8 +2,8 @@
 Contributors: ronalfy
 Tags: gravity forms, emailoctopus
 Requires at least:4.8
-Tested up to: 5.2
-Stable tag: 1.0.1
+Tested up to: 5.3
+Stable tag: 2.0.0
 Requires PHP: 5.6
 Donate link: https://mediaron.com/give/
 License: GPLv2 or later
@@ -12,6 +12,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Integrate EmailOctopus with Gravity Forms
 
 == Description ==
+
+> As of January 15, 2020, there is an <a href="https://docs.gravityforms.com/category/add-ons-gravity-forms/emailoctopus-add-on/">official Gravity Forms EmailOctopus integration</a>. Please read <a href="https://www.gravityforms.com/introducing-the-official-emailoctopus-add-on-for-gravity-forms/">the announcement post</a>.
+> This plugin will no longer be updated or supported as of 2020-02-01. Please use the official Gravity Forms add-on for EmailOctopus for updates and support.
 
 This plugin provides an easy way to integrate <a href="https://emailoctopus.com">EmailOctopus</a> with <a href="https://www.gravityforms.com/">Gravity Forms</a>
 
@@ -22,8 +25,6 @@ Read my full guide here: <a href="https://mediaron.com/emailoctopus-for-gravity-
 = Minimum Requirements =
 - Gravity Forms 2.3+
 - EmailOctopus Subscription
-
-Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub</a>. Pull requests are welcome.
 
 == Installation ==
 
@@ -58,7 +59,7 @@ Development happens on <a href="https://github.com/ronalfy/connect-eo-gf">GitHub
 
 = Is this an official add-on? =
 
-No, this is a third-party add-on for both services
+No. However, Gravity Forms has an official add-on now for EmailOctopus.
 
 == Screenshots ==
 
@@ -71,6 +72,10 @@ No, this is a third-party add-on for both services
 
 == Changelog ==
 
+= 2.0.0 =
+* Released 2020-01-16
+* Documentation update.
+
 = 1.0.1 =
 * Released 2019-05-28
 * Fixing PHP error for feeds
@@ -80,6 +85,9 @@ No, this is a third-party add-on for both services
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+Documentation update. This plugin is now deprecated because there is now an official Gravity Forms add-on for EmailOctopus.
 
 = 1.0.1 =
 Fixing PHP error for feeds.

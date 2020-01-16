@@ -4,7 +4,7 @@ Plugin Name: Connect EmailOctopus and Gravity Forms
 Plugin URI: http://wordpress.org/plugins/connect-eo-gf/
 Description: EmailOctopus add-on for Gravity Forms
 Author: Ronald Huereca
-Version: 1.0.1
+Version: 2.0.0
 Requires at least: 4.9
 Author URI: https://mediaron.com
 Contributors: ronalfy
