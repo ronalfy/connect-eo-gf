@@ -74,7 +74,7 @@ No. However, Gravity Forms has an official add-on now for EmailOctopus.
 
 = 2.0.0 =
 * Released 2020-01-16
-* Documentation update.
+* Documentation update. Gravity Forms now has an official add-on for EmailOctopus. It is recommended to <a href="https://docs.gravityforms.com/category/add-ons-gravity-forms/emailoctopus-add-on/">switch to the official add-on</a>.
 
 = 1.0.1 =
 * Released 2019-05-28
